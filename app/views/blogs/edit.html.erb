@@ -1,18 +1,19 @@
 <body style = "margin:0px">
-<header style ="background-color:teal;height:80px; color:lightsteelblue;top:0px;left:0px; margin-top:-40px;padding-top:20px">
-<p style= "font-size:30px">RITTER</p>
-</header>
 
-<div style= "height:400px; padding:20px">
+    <header style ="background-color:teal;height:80px; color:lightsteelblue;top:0px;left:0px; margin-top:-40px;padding-top:20px">
+        <p style= "font-size:30px">RITTER</p>
+    </header>
 
-<h1>つぶやき編集</h1>
+    <div style= "height:400px; padding:20px">
 
-<%= render 'form', blog: @blog %>
+        <h1>つぶやき編集</h1>
+        <%= render 'form', blog: @blog %>
+        <%= link_to '一覧', blogs_path %>
 
-<%= link_to '一覧', blogs_path %>
+    </div>
 
-</div>
-<footer style= "background-color:skyblue; height:30px; font-size:24px; width:100%">
-<p style = "text-align:right">designed by Yasutaka Ikeda</p>
-</footer>
+    <footer style= "background-color:skyblue; height:30px; font-size:24px; width:100%">
+       <p style = "text-align:right">designed by Yasutaka Ikeda</p>
+    </footer>
+
 </body>

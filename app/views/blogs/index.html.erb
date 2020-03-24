@@ -1,39 +1,37 @@
 <body style = "margin:0px">
-<header style ="background-color:teal;height:80px; color:lightsteelblue;top:0px;left:0px; margin-top:-40px;padding-top:20px">
-<p style= "font-size:30px">RITTER</p>
-</header>
 
-<div style= "height:400px; padding:20px">
+  <header style ="background-color:teal;height:80px; color:lightsteelblue;top:0px;left:0px; margin-top:-40px;padding-top:20px">
+    <p style= "font-size:30px">RITTER</p>
+  </header>
 
+  <div style= "height:400px; padding:20px">
 
-<p id="notice"><%= notice %></p>
+    <p id="notice"><%= notice %></p>
+    <h1>つぶやき一覧</h1>
 
-<h1>つぶやき一覧</h1>
+    <table>
+      <thead>
+        <tr>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+      <tbody>
+        <% @blogs.each do |blog| %>
+          <tr>
+            <td><%= blog.content %></td>
+            <td><%= link_to '編集', edit_blog_path(blog) %></td>
+            <td><%= link_to '削除', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table><br>
 
-  <tbody>
-    <% @blogs.each do |blog| %>
-      <tr>
-        <td><%= blog.content %></td>
-        <td><%= link_to '編集', edit_blog_path(blog) %></td>
-        <td><%= link_to '削除', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <%= link_to 'つぶやく', new_blog_path %>
 
-<br>
+  </div>
 
-<%= link_to 'つぶやく', new_blog_path %>
-
-</div>
-<footer style= "background-color:skyblue; height:30px; font-size:24px; width:100%">
-<p style = "text-align:right">designed by Yasutaka Ikeda</p>
-</footer>
+  <footer style= "background-color:skyblue; height:30px; font-size:24px; width:100%">
+    <p style = "text-align:right">designed by Yasutaka Ikeda</p>
+  </footer>
 </body>
