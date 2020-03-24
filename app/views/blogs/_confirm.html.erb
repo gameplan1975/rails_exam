@@ -1,0 +1,11 @@
+<%= form_with(model: blog, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :以下の内容でよろしいですか？ %><br>
+    <%= blog.content %>
+    <%= form.hidden_field :content %><br><br>
+  </div>
+  <div class="actions">
+    <%= form.submit 'やめる', name: 'back' %>
+    <%= form.submit 'つぶやく' %>
+  </div>
+<% end %>

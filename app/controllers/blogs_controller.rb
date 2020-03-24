@@ -24,8 +24,12 @@ class BlogsController < ApplicationController
     @blog = Blog.new(blog_params)
 
     respond_to do |format|
-      if @blog.save
-        format.html { redirect_to @blog, notice: 'Blog was successfully created.' }
+      if @blog.valid? && params[:confirm]
+        format.html { render :new_confirm }
+      elsif params[:back]
+        format.html { render :new }
+      elsif @blog.save
+        format.html { redirect_to @blog, notice: 'つぶやきが登録されました' }
         format.json { render :show, status: :created, location: @blog }
       else
         format.html { render :new }
@@ -35,9 +39,15 @@ class BlogsController < ApplicationController
   end
 
   def update
+    @blog.assign_attributes(blog_params)
+
     respond_to do |format|
-      if @blog.update(blog_params)
-        format.html { redirect_to @blog, notice: 'Blog was successfully updated.' }
+      if @blog.valid? && params[:confirm]
+        format.html { render :edit_confirm }
+      elsif params[:back]
+        format.html { render :edit }
+      elsif @blog.save
+        format.html { redirect_to @blog, notice: 'つぶやきが更新されました' }
         format.json { render :show, status: :ok, location: @blog }
       else
         format.html { render :edit }
@@ -50,7 +60,7 @@ class BlogsController < ApplicationController
   def destroy
     @blog.destroy
     respond_to do |format|
-      format.html { redirect_to blogs_url, notice: 'Blog was successfully destroyed.' }
+      format.html { redirect_to blogs_url, notice: 'つぶやきが削除されました' }
       format.json { head :no_content }
     end
   end
